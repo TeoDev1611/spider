@@ -73,7 +73,7 @@ func main() {
 				}
 
 				if healthInstall {
-					log.Info("Hello from install")
+					cmds.HealthInstall()
 				}
 				return nil
 			},
