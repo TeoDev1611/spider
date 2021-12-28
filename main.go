@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/TeoDev1611/batman/log"
+	"github.com/TeoDev1611/spider/cmds"
 	"github.com/urfave/cli/v2"
 )
 
@@ -34,12 +35,48 @@ func init() {
 }
 
 func main() {
+	var (
+		healthInstall bool
+		healthCheck   bool
+	)
+
 	app.Commands = []*cli.Command{
 		{
 			Name:        "init",
 			Aliases:     []string{"i", "new"},
 			Usage:       "Init a file for download",
 			Description: "Start a new SpiderFile for download the programs",
+		},
+		{
+			Name:    "health",
+			Aliases: []string{"check"},
+			Usage:   "Check the tools for the usage",
+			Flags: []cli.Flag{
+				&cli.BoolFlag{
+					Name:        "install",
+					Usage:       "Show the install Commands for the tools `BOOL`",
+					Value:       false,
+					Destination: &healthInstall,
+					Aliases:     []string{"i", "ins"},
+				},
+				&cli.BoolFlag{
+					Name:        "check",
+					Usage:       "Check the health for the spider usage",
+					Value:       false,
+					Destination: &healthCheck,
+					Aliases:     []string{"c"},
+				},
+			},
+			Action: func(c *cli.Context) error {
+				if healthCheck {
+					cmds.HealthCmd()
+				}
+
+				if healthInstall {
+					log.Info("Hello from install")
+				}
+				return nil
+			},
 		},
 	}
 
