@@ -39,6 +39,7 @@ func main() {
 		healthInstall bool
 		healthCheck   bool
 		initNow       bool
+		initReset     bool
 	)
 
 	app.Commands = []*cli.Command{
@@ -55,11 +56,23 @@ func main() {
 					Destination: &initNow,
 					Aliases:     []string{"n", "!"},
 				},
+				&cli.BoolFlag{
+					Name:        "reset",
+					Usage:       "Reset to the default SpiderFile!",
+					Value:       false,
+					Destination: &initReset,
+					Aliases:     []string{"r"},
+				},
 			},
 			Action: func(c *cli.Context) error {
 				if initNow {
 					cmds.InitCmd()
 				}
+
+				if initReset {
+					cmds.InitReset()
+				}
+
 				return nil
 			},
 		},
