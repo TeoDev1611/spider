@@ -38,6 +38,7 @@ func main() {
 	var (
 		healthInstall bool
 		healthCheck   bool
+		initNow       bool
 	)
 
 	app.Commands = []*cli.Command{
@@ -46,6 +47,21 @@ func main() {
 			Aliases:     []string{"i", "new"},
 			Usage:       "Init a file for download",
 			Description: "Start a new SpiderFile for download the programs",
+			Flags: []cli.Flag{
+				&cli.BoolFlag{
+					Name:        "now",
+					Usage:       "Start a spider file in the current directory now!",
+					Value:       false,
+					Destination: &initNow,
+					Aliases:     []string{"n", "!"},
+				},
+			},
+			Action: func(c *cli.Context) error {
+				if initNow {
+					cmds.InitCmd()
+				}
+				return nil
+			},
 		},
 		{
 			Name:    "health",
@@ -54,7 +70,7 @@ func main() {
 			Flags: []cli.Flag{
 				&cli.BoolFlag{
 					Name:        "install",
-					Usage:       "Show the install Commands for the tools `BOOL`",
+					Usage:       "Show the install Commands for the tools",
 					Value:       false,
 					Destination: &healthInstall,
 					Aliases:     []string{"i", "ins"},
