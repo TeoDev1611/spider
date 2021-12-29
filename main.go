@@ -7,6 +7,7 @@ import (
 
 	"github.com/TeoDev1611/batman/log"
 	"github.com/TeoDev1611/spider/cmds"
+	"github.com/TeoDev1611/spider/core/parser"
 	"github.com/urfave/cli/v2"
 )
 
@@ -38,6 +39,7 @@ func main() {
 	var (
 		healthInstall bool
 		healthCheck   bool
+		healthInfo    bool
 		initNow       bool
 		initReset     bool
 	)
@@ -95,6 +97,13 @@ func main() {
 					Destination: &healthCheck,
 					Aliases:     []string{"c"},
 				},
+				&cli.BoolFlag{
+					Name:        "info",
+					Usage:       "Get the information from the SpiderFile",
+					Value:       false,
+					Destination: &healthInfo,
+					Aliases:     []string{"about"},
+				},
 			},
 			Action: func(c *cli.Context) error {
 				if healthCheck {
@@ -103,6 +112,10 @@ func main() {
 
 				if healthInstall {
 					cmds.HealthInstall()
+				}
+
+				if healthInfo {
+					parser.GetData()
 				}
 				return nil
 			},

@@ -120,3 +120,13 @@ func StartSpiderFile() {
 	viper.WriteConfig()
 	viper.SafeWriteConfig()
 }
+
+func StartReadViper() {
+	viper.AddConfigPath("./")
+	viper.SetConfigName("SpiderFile")
+	viper.SetConfigType("toml")
+	err := viper.ReadInConfig()
+	if err != nil {
+		log.Error(err.Error())
+	}
+}
