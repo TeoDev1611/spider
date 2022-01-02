@@ -66,6 +66,65 @@ export function CheckAndListInfo() {
       break;
     }
 
+    case "linux": {
+      if ("apt" in TOML) {
+        const data = TOML.apt.map(GetPkg);
+        Header("       --- APT PACKAGES ---       ");
+        Keys("PACKAGES LISTED:");
+        data.forEach((pkg) => {
+          console.log(pkg);
+        });
+      }
+      if ("pacman" in TOML) {
+        const data = TOML.pacman.map(GetPkg);
+        Header("       --- PACMAN PACKAGES ---       ");
+        Keys("PACKAGES LISTED:");
+        data.forEach((pkg) => {
+          console.log(pkg);
+        });
+      }
+      if ("snap" in TOML) {
+        const data = TOML.snap.map(GetPkg);
+        Header("       --- SNAP PACKAGES ---       ");
+        Keys("PACKAGES LISTED:");
+        data.forEach((pkg) => {
+          console.log(pkg);
+        });
+      }
+      if ("git" in TOML) {
+        Header("       --- GIT REPOS ---       ");
+        Keys("GIT INFORMATION:");
+        TOML.git.forEach((repo) => {
+          console.log(
+            `--- \nREPO: ${repo.repo} \nUSER HOME: ${repo.homeUser} \nDESTINATION: ${repo.destination} \n---`,
+          );
+        });
+      }
+      break;
+    }
+
+    case "darwin": {
+      if ("brew" in TOML) {
+        Header("       --- BREW PACKAGES ---       ");
+        Keys("PACKAGES AND NIGHTLY:");
+        TOML.brew.forEach((pkg) => {
+          console.log(
+            `--- \nPACKAGE: ${pkg.pkg} \nNIGHTLY: ${pkg.nightly} \n---`,
+          );
+        });
+      }
+      if ("git" in TOML) {
+        Header("       --- GIT REPOS ---       ");
+        Keys("GIT INFORMATION:");
+        TOML.git.forEach((repo) => {
+          console.log(
+            `--- \nREPO: ${repo.repo} \nUSER HOME: ${repo.homeUser} \nDESTINATION: ${repo.destination} \n---`,
+          );
+        });
+      }
+      break;
+    }
+
     default: {
       log.error("Platform unsupported!");
       break;
