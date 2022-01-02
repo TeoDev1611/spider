@@ -1,0 +1,20 @@
+[[choco]]
+nightly = true
+pkg = "python"
+
+[[git]]
+dest = "AppData\\Local\\nvim"
+homeUser = true
+repo = "github.com/TeoDev1611/astro.nvim"
+
+[info]
+author = "Teo"
+description = "My startup config"
+name = "Teo Start"
+version = 1
+
+[[scoop]]
+pkg = "deno"
+
+[[scoop]]
+pkg = "neovim-nightly"
