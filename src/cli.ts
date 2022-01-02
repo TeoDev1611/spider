@@ -1,4 +1,5 @@
 import Denomander from "https://deno.land/x/denomander@0.9.1/mod.ts";
+import { WriteSpiderFile } from "parser/start.ts";
 
 const cli = new Denomander({
   app_name: "spider",
@@ -11,7 +12,10 @@ cli
   .command("init", "Start a new SpiderFile for download the programs")
   .option("-n, --now", "Start a spider file in the current directory now!")
   .action(() => {
-    console.log(cli.now);
+    if (cli.now === true) {
+      WriteSpiderFile();
+      Deno.exit();
+    }
   });
 
 cli.parse(Deno.args);

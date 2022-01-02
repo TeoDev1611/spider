@@ -1,3 +1,6 @@
+import { path } from "src/deps.ts";
+import { currentDir } from "utils/files.ts";
+
 export const DEFAULT_DATA_WINDOWS = {
   info: {
     name: "Teo start workspace",
@@ -67,3 +70,8 @@ export const DEFAULT_DATA_MACOS = {
     },
   ],
 };
+
+export const SPIDER_FILE_PATH: string = path.join(
+  currentDir,
+  "SpiderFile.toml",
+);
