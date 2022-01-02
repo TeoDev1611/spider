@@ -4,11 +4,11 @@ export const currentDir: string = Deno.cwd();
 export const cacheDir = dirs.baseDirs.setup().cacheDir;
 
 export function getLogPath(file: string): string {
-  if (existsFile(path.join(cacheDir, "denoUp")) != true) {
-    Deno.mkdir(path.join(cacheDir, "denoUp"));
-    log.info("DenoUp folder created");
+  if (existsFile(path.join(cacheDir, "Spider")) != true) {
+    Deno.mkdir(path.join(cacheDir, "Spider"));
+    log.info("Spider folder created");
   }
-  return path.join(cacheDir, "denoUp", file);
+  return path.join(cacheDir, "Spider", file);
 }
 
 export function existsFile(file: string): boolean {
