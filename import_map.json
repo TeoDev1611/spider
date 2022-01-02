@@ -5,6 +5,6 @@
     "cmds/": "./src/commands/",
     "project/": "./src/project/",
     "utils/": "./src/utils/",
-    "info/": "./src/info/"
+    "parser/": "./src/parser/"
   }
 }
