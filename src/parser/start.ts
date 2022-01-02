@@ -1,6 +1,6 @@
 import { toml } from "src/deps.ts";
 import * as log from "utils/logs.ts";
-import os from "https://deno.land/x/dos@v0.11.0/mod.ts";
+import { platform } from "utils/os.ts";
 import {
   DEAFULT_DATA_LINUX,
   DEFAULT_DATA_MACOS,
@@ -9,7 +9,6 @@ import {
 } from "parser/default.ts";
 
 export function WriteSpiderFile() {
-  const platform: string = os.platform();
   switch (platform) {
     case "windows": {
       const data = toml.stringify(DEFAULT_DATA_WINDOWS);
@@ -34,4 +33,11 @@ export function WriteSpiderFile() {
       break;
     }
   }
+}
+
+export function ReadSpiderFile(): Record<string, unknown> {
+  const decoder = new TextDecoder("utf-8");
+  const data = Deno.readFileSync(SPIDER_FILE_PATH);
+  const TOML_DATA = toml.parse(decoder.decode(data));
+  return TOML_DATA;
 }
