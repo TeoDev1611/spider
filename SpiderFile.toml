@@ -1,21 +1,25 @@
 
+[info]
+name = "Teo start workspace"
+author = "Teo"
+description = "My Startup workspace config"
+version = 1
+
+[[scoop]]
+pkg = "deno"
+
+[[scoop]]
+pkg = "neovim-nightly"
+
 [[choco]]
-  nightly = true
-  pkg = "python"
+pkg = "python"
+nightly = true
+
+[[choco]]
+pkg = "cowsay"
+nightly = true
 
 [[git]]
-  dest = "AppData\\Local\\nvim"
-  homeUser = true
-  repo = "github.com/TeoDev1611/astro.nvim"
-
-[info]
-  author = "Teo"
-  description = "My startup config"
-  name = "Teo Start"
-  version = 1.0
-
-[[scoop]]
-  pkg = "deno"
-
-[[scoop]]
-  pkg = "neovim-nightly"
+repo = "github.com/TeoDev1611/astro.nvim"
+homeUser = true
+destination = "AppData\\Local\\nvim"
