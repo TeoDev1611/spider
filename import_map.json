@@ -2,8 +2,7 @@
   "imports": {
     "src/": "./src/",
     "@/": "./",
-    "cmds/": "./src/commands/",
-    "project/": "./src/project/",
+    "runner/": "./src/runner/",
     "utils/": "./src/utils/",
     "parser/": "./src/parser/"
   }

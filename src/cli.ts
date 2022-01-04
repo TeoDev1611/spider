@@ -1,6 +1,7 @@
 import Denomander from "https://deno.land/x/denomander@0.9.1/mod.ts";
 import * as parser from "parser/start.ts";
 import * as pkg from "parser/list.js";
+import * as runner from "runner/start.ts";
 
 const cli = new Denomander({
   app_name: "spider",
@@ -26,6 +27,14 @@ cli
     if (cli.info === true) {
       pkg.CheckAndListInfo();
       Deno.exit();
+    }
+  });
+
+cli
+  .command("install [opts]", "Install the Spider Packages!")
+  .action(({ opts }: any) => {
+    if (opts === "now") {
+      runner.Runner("scoop", ["neovim", "deno"]);
     }
   });
 
