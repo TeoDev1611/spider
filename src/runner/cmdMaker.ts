@@ -12,13 +12,13 @@ export function GetCommand(
     | "status"
     | "cmdAdmin"
     | "runPs1",
-  flags?: "chocoNightly" | "gitDepth",
-  pkgs?: Array<string> | ["default"],
+  pkgs?: Array<string>,
   url?: string,
   dest?: string,
   file?: string,
+  flags?: "chocoNightly" | "gitDepth",
 ): string {
-  pkgs = (typeof pkgs === "undefined") ? ["cowsay", "echo"] : pkgs;
+  pkgs = (typeof pkgs === "undefined") ? ["neovim"] : pkgs;
   switch (prgm) {
     case "scoop": {
       switch (action) {
@@ -76,17 +76,13 @@ export function GetCommand(
       switch (action) {
         case "install": {
           if (flags === "chocoNightly") {
-            return `${Choco.Install} ${
-              pkgs.join(" ")
-            } ${Choco.Flags.InstallNow} ${Choco.Flags.Nightly}`;
+            return `${Choco.Install} ${pkgs} ${Choco.Flags.InstallNow} ${Choco.Flags.Nightly}`;
           }
-          return `${Choco.Install} ${pkgs.join(" ")} ${Choco.Flags.InstallNow}`;
+          return `${Choco.Install} ${pkgs} ${Choco.Flags.InstallNow}`;
         }
 
         case "uninstall": {
-          return `${Choco.Uninstall} ${
-            pkgs.join(" ")
-          } ${Choco.Flags.InstallNow}`;
+          return `${Choco.Uninstall} ${pkgs} ${Choco.Flags.InstallNow}`;
         }
 
         case "version": {

@@ -1,17 +1,9 @@
 import { ReadSpiderFile } from "parser/start.ts";
 import { platform } from "utils/os.ts";
+import { Header, Info } from "utils/colors.ts";
 import * as log from "utils/logs.ts";
-import { colors } from "src/deps.ts";
 
-function Header(msg) {
-  console.log(colors.bgBlue(msg));
-}
-
-function Keys(msg) {
-  console.log(colors.brightMagenta(msg));
-}
-
-function GetPkg(value, index, array) {
+export function GetPkg(value, index, array) {
   if ("pkg" in value) {
     return value.pkg;
   } else {
@@ -26,13 +18,13 @@ export function CheckAndListInfo() {
     Deno.exit(1);
   } else {
     Header("       --- INFORMATION ABOUT THIS SPIDEY WORKSPACE ---       ");
-    Keys("NAME:");
+    Info("NAME:");
     console.log(TOML.info.name);
-    Keys("DESCRIPTION:");
+    Info("DESCRIPTION:");
     console.log(TOML.info.description);
-    Keys("AUTHORS:");
+    Info("AUTHORS:");
     console.log(TOML.info.author);
-    Keys("VERSION:");
+    Info("VERSION:");
     console.log(TOML.info.version);
   }
   switch (platform) {
@@ -40,14 +32,14 @@ export function CheckAndListInfo() {
       if ("scoop" in TOML) {
         const data = TOML.scoop.map(GetPkg);
         Header("       --- SCOOP PACKAGES ---       ");
-        Keys("PACKAGES LISTED:");
+        Info("PACKAGES LISTED:");
         data.forEach((pkg) => {
           console.log(pkg);
         });
       }
       if ("choco" in TOML) {
         Header("       --- CHOCO PACKAGES ---       ");
-        Keys("PACKAGES AND NIGHTLY:");
+        Info("PACKAGES AND NIGHTLY:");
         TOML.choco.forEach((pkg) => {
           console.log(
             `--- \nPACKAGE: ${pkg.pkg} \nNIGHTLY: ${pkg.nightly} \n---`,
@@ -56,7 +48,7 @@ export function CheckAndListInfo() {
       }
       if ("git" in TOML) {
         Header("       --- GIT REPOS ---       ");
-        Keys("GIT INFORMATION:");
+        Info("GIT INFORMATION:");
         TOML.git.forEach((repo) => {
           console.log(
             `--- \nREPO: ${repo.repo} \nUSER HOME: ${repo.homeUser} \nDESTINATION: ${repo.destination} \n---`,
@@ -70,7 +62,7 @@ export function CheckAndListInfo() {
       if ("apt" in TOML) {
         const data = TOML.apt.map(GetPkg);
         Header("       --- APT PACKAGES ---       ");
-        Keys("PACKAGES LISTED:");
+        Info("PACKAGES LISTED:");
         data.forEach((pkg) => {
           console.log(pkg);
         });
@@ -78,7 +70,7 @@ export function CheckAndListInfo() {
       if ("pacman" in TOML) {
         const data = TOML.pacman.map(GetPkg);
         Header("       --- PACMAN PACKAGES ---       ");
-        Keys("PACKAGES LISTED:");
+        Info("PACKAGES LISTED:");
         data.forEach((pkg) => {
           console.log(pkg);
         });
@@ -86,14 +78,14 @@ export function CheckAndListInfo() {
       if ("snap" in TOML) {
         const data = TOML.snap.map(GetPkg);
         Header("       --- SNAP PACKAGES ---       ");
-        Keys("PACKAGES LISTED:");
+        Info("PACKAGES LISTED:");
         data.forEach((pkg) => {
           console.log(pkg);
         });
       }
       if ("git" in TOML) {
         Header("       --- GIT REPOS ---       ");
-        Keys("GIT INFORMATION:");
+        Info("GIT INFORMATION:");
         TOML.git.forEach((repo) => {
           console.log(
             `--- \nREPO: ${repo.repo} \nUSER HOME: ${repo.homeUser} \nDESTINATION: ${repo.destination} \n---`,
@@ -106,7 +98,7 @@ export function CheckAndListInfo() {
     case "darwin": {
       if ("brew" in TOML) {
         Header("       --- BREW PACKAGES ---       ");
-        Keys("PACKAGES AND NIGHTLY:");
+        Info("PACKAGES AND NIGHTLY:");
         TOML.brew.forEach((pkg) => {
           console.log(
             `--- \nPACKAGE: ${pkg.pkg} \nNIGHTLY: ${pkg.nightly} \n---`,
@@ -115,7 +107,7 @@ export function CheckAndListInfo() {
       }
       if ("git" in TOML) {
         Header("       --- GIT REPOS ---       ");
-        Keys("GIT INFORMATION:");
+        Info("GIT INFORMATION:");
         TOML.git.forEach((repo) => {
           console.log(
             `--- \nREPO: ${repo.repo} \nUSER HOME: ${repo.homeUser} \nDESTINATION: ${repo.destination} \n---`,

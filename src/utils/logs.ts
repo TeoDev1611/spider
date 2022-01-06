@@ -1,7 +1,14 @@
 import { log } from "src/deps.ts";
 import { getLogPath } from "utils/files.ts";
 
-const headerDenoUp = `[ SPIDER ]:`;
+export const Headers = {
+  spiderHeader: `SPIDER ->`,
+  logsSym: {
+    info: "ⓘ INFO:",
+    error: "✗ ERROR:",
+    warn: "⚠ WARNING:",
+  },
+};
 
 await log.setup({
   handlers: {
@@ -21,14 +28,14 @@ await log.setup({
 });
 
 export function info(message: string) {
-  log.info(`${headerDenoUp} ${message} :p`);
+  log.info(`${Headers.spiderHeader} ${Headers.logsSym.info} ${message} `);
 }
 
 export function warn(message: string) {
-  log.warning(`${headerDenoUp} ${message} >:|`);
+  log.warning(`${Headers.spiderHeader} ${Headers.logsSym.warn} ${message}`);
 }
 
 export function error(message: string) {
-  log.error(`${headerDenoUp} ${message} >:{`);
+  log.error(`${Headers.spiderHeader} ${Headers.logsSym.error} ${message}`);
   Deno.exit(1);
 }

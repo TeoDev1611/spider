@@ -4,6 +4,7 @@
     "@/": "./",
     "runner/": "./src/runner/",
     "utils/": "./src/utils/",
-    "parser/": "./src/parser/"
+    "parser/": "./src/parser/",
+    "install/": "./src/install/"
   }
 }
