@@ -6,10 +6,10 @@ description = "My Startup workspace config"
 version = 1
 
 [[scoop]]
-pkg = "deno"
+pkg = "glow"
 
 [[scoop]]
-pkg = "neovim-nightly"
+pkg = 'lsd'
 
 [[choco]]
 pkg = "python"
@@ -17,7 +17,7 @@ nightly = true
 
 [[choco]]
 pkg = "cowsay"
-nightly = true
+nightly = false
 
 [[git]]
 repo = "github.com/TeoDev1611/astro.nvim"

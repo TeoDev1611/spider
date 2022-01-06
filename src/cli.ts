@@ -1,7 +1,7 @@
 import Denomander from "https://deno.land/x/denomander@0.9.1/mod.ts";
 import * as parser from "parser/start.ts";
 import * as pkg from "parser/list.js";
-import * as install from "install/install.ts";
+import * as install from "install/install.js";
 
 const cli = new Denomander({
   app_name: "spider",
