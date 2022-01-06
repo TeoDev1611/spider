@@ -27,15 +27,27 @@ await log.setup({
   },
 });
 
+/**
+ * Log to the info level and add to the spider.log file
+ * @param message Message to log
+ */
 export function info(message: string) {
   log.info(`${Headers.spiderHeader} ${Headers.logsSym.info} ${message} `);
 }
 
+/**
+ * Log to the warning level and add to the spider.log file
+ * @param message Message to log
+ */
 export function warn(message: string) {
   log.warning(`${Headers.spiderHeader} ${Headers.logsSym.warn} ${message}`);
 }
 
+/**
+ * Log to the error level, add to the spider.log and exit to 2 code
+ * @param message Message to log
+ */
 export function error(message: string) {
   log.error(`${Headers.spiderHeader} ${Headers.logsSym.error} ${message}`);
-  Deno.exit(1);
+  Deno.exit(2);
 }

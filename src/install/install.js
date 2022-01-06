@@ -7,6 +7,9 @@ import * as files from "utils/files.ts";
 import * as list from "parser/list.js";
 import { path } from "src/deps.ts";
 
+/**
+ * @description Install command for use directly in the CLI
+ */
 export async function Install() {
   const Toml = toml.ReadSpiderFile();
   if ("scoop" in Toml) {

@@ -8,6 +8,9 @@ import {
   SPIDER_FILE_PATH,
 } from "parser/default.ts";
 
+/**
+ * @description The util for start and write the spider file
+ */
 export function WriteSpiderFile() {
   switch (platform) {
     case "windows": {
@@ -35,6 +38,10 @@ export function WriteSpiderFile() {
   }
 }
 
+/**
+ * Read the spider file and decode the data!
+ * @returns {Record<string, unknown>}
+ */
 export function ReadSpiderFile(): Record<string, unknown> {
   const decoder = new TextDecoder("utf-8");
   const data = Deno.readFileSync(SPIDER_FILE_PATH);

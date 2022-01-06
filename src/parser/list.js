@@ -3,6 +3,10 @@ import { platform } from "utils/os.ts";
 import { Header, Info } from "utils/colors.ts";
 import * as log from "utils/logs.ts";
 
+/**
+ * @desc GetPkg function for the map and get the value from the pkg
+ * @returns {string}
+ */
 export function GetPkg(value, index, array) {
   if ("pkg" in value) {
     return value.pkg;
@@ -11,6 +15,9 @@ export function GetPkg(value, index, array) {
   }
 }
 
+/**
+ * @description Improve the list and info for the command!
+ */
 export function CheckAndListInfo() {
   const TOML = ReadSpiderFile();
   if (!("info" in TOML)) {

@@ -1,6 +1,17 @@
 import { Choco, Git, Helpers, Scoop } from "runner/types.ts";
 import * as log from "utils/logs.ts";
 
+/**
+ *  The function for make the commands! like a lexer or parser
+ * @param prgm The options for the programs to generate the commadn
+ * @param action The actions to use the program
+ * @param pkgs The package for install with the tools
+ * @param url The url for clone the repo if use the `git` tool
+ * @param dest The destination to clone the repo if use the `git` tool
+ * @param file  The file to execute with powershell helper
+ * @param flags The flags in case the use git or choco tools
+ * @returns {string} The command maked!
+ */
 export function GetCommand(
   prgm: "scoop" | "git" | "helper" | "choco",
   action:
