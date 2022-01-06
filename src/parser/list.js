@@ -11,7 +11,7 @@ function Keys(msg) {
   console.log(colors.brightMagenta(msg));
 }
 
-function GetPkg(value, index, array) {
+export function GetPkg(value, index, array) {
   if ("pkg" in value) {
     return value.pkg;
   } else {
