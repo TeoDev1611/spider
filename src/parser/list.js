@@ -1,6 +1,6 @@
 import { ReadSpiderFile } from "parser/start.ts";
 import { platform } from "utils/os.ts";
-import { Header, Info } from "utils/colors.ts";
+import { Header, Keys } from "utils/colors.ts";
 import * as log from "utils/logs.ts";
 
 /**
@@ -25,13 +25,13 @@ export function CheckAndListInfo() {
     Deno.exit(1);
   } else {
     Header("       --- INFORMATION ABOUT THIS SPIDEY WORKSPACE ---       ");
-    Info("NAME:");
+    Keys("NAME:");
     console.log(TOML.info.name);
-    Info("DESCRIPTION:");
+    Keys("DESCRIPTION:");
     console.log(TOML.info.description);
-    Info("AUTHORS:");
+    Keys("AUTHORS:");
     console.log(TOML.info.author);
-    Info("VERSION:");
+    Keys("VERSION:");
     console.log(TOML.info.version);
   }
   switch (platform) {
@@ -39,14 +39,14 @@ export function CheckAndListInfo() {
       if ("scoop" in TOML) {
         const data = TOML.scoop.map(GetPkg);
         Header("       --- SCOOP PACKAGES ---       ");
-        Info("PACKAGES LISTED:");
+        Keys("PACKAGES LISTED:");
         data.forEach((pkg) => {
           console.log(pkg);
         });
       }
       if ("choco" in TOML) {
         Header("       --- CHOCO PACKAGES ---       ");
-        Info("PACKAGES AND NIGHTLY:");
+        Keys("PACKAGES AND NIGHTLY:");
         TOML.choco.forEach((pkg) => {
           console.log(
             `--- \nPACKAGE: ${pkg.pkg} \nNIGHTLY: ${pkg.nightly} \n---`,
@@ -55,7 +55,7 @@ export function CheckAndListInfo() {
       }
       if ("git" in TOML) {
         Header("       --- GIT REPOS ---       ");
-        Info("GIT INFORMATION:");
+        Keys("GIT INFORMATION:");
         TOML.git.forEach((repo) => {
           console.log(
             `--- \nREPO: ${repo.repo} \nUSER HOME: ${repo.homeUser} \nDESTINATION: ${repo.destination} \nFAST DOWNLOAD: ${repo.fastDepth} \n---`,
@@ -69,7 +69,7 @@ export function CheckAndListInfo() {
       if ("apt" in TOML) {
         const data = TOML.apt.map(GetPkg);
         Header("       --- APT PACKAGES ---       ");
-        Info("PACKAGES LISTED:");
+        Keys("PACKAGES LISTED:");
         data.forEach((pkg) => {
           console.log(pkg);
         });
@@ -85,14 +85,14 @@ export function CheckAndListInfo() {
       if ("snap" in TOML) {
         const data = TOML.snap.map(GetPkg);
         Header("       --- SNAP PACKAGES ---       ");
-        Info("PACKAGES LISTED:");
+        Keys("PACKAGES LISTED:");
         data.forEach((pkg) => {
           console.log(pkg);
         });
       }
       if ("git" in TOML) {
         Header("       --- GIT REPOS ---       ");
-        Info("GIT INFORMATION:");
+        Keys("GIT INFORMATION:");
         TOML.git.forEach((repo) => {
           console.log(
             `--- \nREPO: ${repo.repo} \nUSER HOME: ${repo.homeUser} \nDESTINATION: ${repo.destination} \n---`,
@@ -105,7 +105,7 @@ export function CheckAndListInfo() {
     case "darwin": {
       if ("brew" in TOML) {
         Header("       --- BREW PACKAGES ---       ");
-        Info("PACKAGES AND NIGHTLY:");
+        Keys("PACKAGES AND NIGHTLY:");
         TOML.brew.forEach((pkg) => {
           console.log(
             `--- \nPACKAGE: ${pkg.pkg} \nNIGHTLY: ${pkg.nightly} \n---`,
@@ -114,7 +114,7 @@ export function CheckAndListInfo() {
       }
       if ("git" in TOML) {
         Header("       --- GIT REPOS ---       ");
-        Info("GIT INFORMATION:");
+        Keys("GIT INFORMATION:");
         TOML.git.forEach((repo) => {
           console.log(
             `--- \nREPO: ${repo.repo} \nUSER HOME: ${repo.homeUser} \nDESTINATION: ${repo.destination} \n---`,

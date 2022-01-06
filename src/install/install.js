@@ -20,7 +20,7 @@ export async function Install() {
     log.info("Done! Scoop Installed");
   }
   if ("choco" in Toml) {
-    Toml.choco.forEach((pkg) => {
+    Toml.choco.forEach(async (pkg) => {
       colors.Header("--- CHOCO INSTALLING ---");
       if (pkg.nightly === true) {
         const cmd = cmds.GetCommand(
@@ -48,7 +48,7 @@ export async function Install() {
     });
   }
   if ("git" in Toml) {
-    Toml.git.forEach((r) => {
+    Toml.git.forEach(async (r) => {
       colors.Header("--- GIT REPOS CLONNING --- ");
       if (r.homeUser === true) {
         const Dest = path.join(files.homeDir, r.destination);
@@ -62,7 +62,7 @@ export async function Install() {
             undefined,
             "gitDepth",
           );
-          console.log(cmd);
+          await run.Run(cmd);
         } else {
           const cmd = cmds.GetCommand(
             "git",
@@ -72,7 +72,7 @@ export async function Install() {
             Dest,
             undefined,
           );
-          console.log(cmd);
+          await run.Run(cmd);
         }
       } else {
         if (r.fastDepth === true) {
@@ -85,7 +85,7 @@ export async function Install() {
             undefined,
             "gitDepth",
           );
-          console.log(cmd);
+          await run.Run(cmd);
         } else {
           const cmd = cmds.GetCommand(
             "git",
@@ -95,7 +95,7 @@ export async function Install() {
             r.destination,
             undefined,
           );
-          console.log(cmd);
+          await run.Run(cmd);
         }
       }
     });

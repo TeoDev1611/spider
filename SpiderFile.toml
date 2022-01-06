@@ -22,4 +22,4 @@ nightly = false
 repo = "github.com/TeoDev1611/astro.nvim"
 homeUser = true
 fastDepth = true
-destination = "AppData\\Local\\nvim"
+destination = "Desktop\\nvim"
