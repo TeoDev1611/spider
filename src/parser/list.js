@@ -51,7 +51,7 @@ export function CheckAndListInfo() {
         Info("GIT INFORMATION:");
         TOML.git.forEach((repo) => {
           console.log(
-            `--- \nREPO: ${repo.repo} \nUSER HOME: ${repo.homeUser} \nDESTINATION: ${repo.destination} \n---`,
+            `--- \nREPO: ${repo.repo} \nUSER HOME: ${repo.homeUser} \nDESTINATION: ${repo.destination} \nFAST DOWNLOAD: ${repo.fastDepth} \n---`,
           );
         });
       }

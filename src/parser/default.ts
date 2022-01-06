@@ -23,6 +23,7 @@ export const DEFAULT_DATA_WINDOWS = {
       repo: "github.com/TeoDev1611/astro.nvim",
       homeUser: true,
       destination: "AppData\\Local\\nvim",
+      fastDepth: true,
     },
   ],
 };
@@ -48,6 +49,7 @@ export const DEAFULT_DATA_LINUX = {
       repo: "github.com/TeoDev1611/astro.nvim",
       homeUser: true,
       destination: ".config/nvim",
+      fastDepth: true,
     },
   ],
 };
@@ -67,6 +69,7 @@ export const DEFAULT_DATA_MACOS = {
       repo: "github.com/TeoDev1611/astro.nvim",
       homeUser: true,
       destination: ".config/nvim",
+      fastDepth: true,
     },
   ],
 };

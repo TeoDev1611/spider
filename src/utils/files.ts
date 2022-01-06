@@ -2,8 +2,9 @@ import { dirs, fs, path } from "src/deps.ts";
 import * as log from "utils/logs.ts";
 
 export const currentDir: string = Deno.cwd();
-export const cacheDir = dirs.baseDirs.setup().cacheDir;
-export const configDir = dirs.baseDirs.setup().configDir;
+export const cacheDir: string = dirs.baseDirs.setup().cacheDir;
+export const configDir: string = dirs.baseDirs.setup().configDir;
+export const homeDir: string = dirs.baseDirs.setup().homeDir;
 
 export function getLogPath(file: string): string {
   if (existsFile(path.join(cacheDir, "Spider")) != true) {

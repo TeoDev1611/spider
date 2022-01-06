@@ -1,5 +1,5 @@
 fmt:
-	deno fmt && dprint fmt ./README.md
+	deno fmt && dprint fmt ./README.md ./SpiderFile.toml ./SpiderFile.json
 
 install-win:
 	powershell -Command 'iwr https://deno.land/install.ps1 -useb | iex'
